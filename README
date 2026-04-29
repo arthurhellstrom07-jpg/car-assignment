@@ -1,0 +1,39 @@
+Trafikböter System
+
+--Beskrivning--
+Detta är ett Python-baserat system för att hantera trafikböter. Programmet låter användaren registrera personer, bilar och fartkameror, samt automatiskt beräkna böter baserat på olika trafikförseelser.
+
+--Funktioner--
+- Lägg till personer, bilar och fartkameror i systemet
+- Beräkna böter automatiskt baserat på:
+-- Fortkörning - böter beräknas utifrån hur mycket föraren överskred hastighetsgränsen
+-- Körning utan tillräcklig ålder - böter för förare under 18 år
+-- Stöld av fordon - böter om bilen ej ägs av föraren
+-- Oregistrerat fordon - böter om bilen inte finns i registret
+-- God smak i bilar - erhållning för föraren om bilen är cool
+- Spara alla böter till en json-fil
+- Visa alla registrerade böter
+
+--Projektstruktur-- (**JAG HAR ANVÄNT AI FÖR ASCII TRÄDSTRUKTUREN**)
+biluppgift/
+│
+├── main.py                  # Huvudprogrammet
+├── modules/
+│   ├── classes.py           # Dataklasser och FineCalculator-logik
+│   └── json_handler.py      # Hjälpfunktioner för att läsa/skriva JSON
+└── data/
+    ├── persons.json         # Registrerade personer
+    ├── cars.json            # Registrerade bilar
+    ├── speed_cameras.json   # Registrerade fartkameror
+    └── fines.json           # Utfärdade böter
+
+--Användning--
+- Kör programmet med: "main.py"
+- Följ instruktionerna i terminalen
+
+--Böter & Belopp--
+Fortkörning | (hastighet - hastighetsgräns) * 100 kr
+Körning utan tillräcklig ålder | 500 kr
+Körning av stulen bil | 300 kr
+Oregistrerat fordon | 200 kr
+Bra bilsmak | -100 kr
