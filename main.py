@@ -1,7 +1,9 @@
+# Import from modules
 from modules import json_handler, classes
 
+# Main function
 def main():
-    # Persons
+    # User input for persons, the person object will then get appended to the "persons.json" file to be used later
     if input("Would you like to add a person to the list? (y/n) ").lower() == "y":
         person = classes.Person(input("Name: "), int(input("Age: ")), input("ID: "))
         if person.__dict__ in json_handler.read("data/persons.json"):
@@ -12,7 +14,7 @@ def main():
             json_handler.append_to_json("data/persons.json", person.__dict__)
             print("Person added to the list.")
     
-    # Cars
+    # User input for cars, the person object will then get appended to the "cars.json" file to be used later
     if input("Would you like to add a car to the list? (y/n) ").lower() == "y":
         car = classes.Car(input("Brand: "), input("Model: "), input("License Plate: "), input("Owner ID: "))
         if car.__dict__ in json_handler.read("data/cars.json"):
@@ -23,7 +25,7 @@ def main():
             json_handler.append_to_json("data/cars.json", car.__dict__)
             print("Car added to the list.")
     
-    # Speed cameras
+    # User input for speed cameras, the person object will then get appended to the "speed_cameras.json" file to be used later
     if input("Would you like to add a speed camera? (y/n) ").lower() == "y":
         speed_camera = classes.SpeedCamera(input("Location: "), int(input("Speed Limit: ")))
         if speed_camera.__dict__ in json_handler.read("data/speed_cameras.json"):
@@ -41,7 +43,7 @@ def main():
     persons = json_handler.read("data/persons.json")
     cars = json_handler.read("data/cars.json")
 
-    # Calculate fine
+    # Create a finecalculator object and calculate the fine, append it to "fines.json"
     fine_calculator = classes.FineCalculator(location, speed, license_plate, driver)
     fine_calculator.calculate_fine(speed_cameras, persons, cars)
 
